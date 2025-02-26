@@ -1,14 +1,11 @@
 @extends('layouts.app')
 
 <!-- Main Content -->
-
 @section('content-body')
     <main>
         <section id="about" class="about">
             <h2>من نحن</h2>
-            <p>نحن شركة رائدة في مجال تكرير النفط، نقدم منتجات بترولية عالية الجودة وحلولًا طاقة مبتكرة. مع عقود من الخبرة،
-                نضمن
-                عمليات مستدامة وفعالة.</p>
+            <p>نحن شركة رائدة في مجال تكرير النفط، نقدم منتجات بترولية عالية الجودة وحلولًا طاقة مبتكرة. مع عقود من الخبرة، نضمن عمليات مستدامة وفعالة.</p>
         </section>
 
         <section id="services" class="services">
@@ -29,8 +26,7 @@
 
         <section id="contact">
             <h2>اتصل بنا</h2>
-            <p>للاستفسارات أو طلب الخدمات، يرجى التواصل معنا عبر البريد الإلكتروني: <a
-                    href="mailto:info@refinery.com">info@refinery.com</a>.</p>
+            <p>للاستفسارات أو طلب الخدمات، يرجى التواصل معنا عبر البريد الإلكتروني: <a href="mailto:info@refinery.com">info@refinery.com</a>.</p>
         </section>
     </main>
 @endsection

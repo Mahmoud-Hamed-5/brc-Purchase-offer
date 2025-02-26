@@ -16,7 +16,7 @@
     <main>
         @include('admin.purchase.partials.purchase-offer_editModal')
 
-        <div class="bg-light" dir="rtl">
+        <div  dir="rtl">
             <div class="container mt-4">
 
                 <div class="top-buttons">

@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -16,23 +15,46 @@
 
     @include('layouts.head-css')
 
+    <!-- Your existing styles -->
+    <link rel="stylesheet" href="path/to/your/styles.css">
 </head>
 
 <body>
 
     @include('layouts.topbar')
 
+    <div id="loading-spinner" style="display: none;">
+        <div class="spinner"></div>
+    </div>
 
-    <!-- المحتوى الرئيسي -->
-    <div class="content">
+    <button id="back-to-top" title="Go to top">&#8593;</button>
 
-        <div class="mt-2" dir="ltr">
-            @include('layouts.partials.messages')
+    <!-- Main container for content and ads board -->
+    <div class="main-container">
+
+        <!-- Main content -->
+        <div class="content">
+            <div class="mt-2" dir="ltr">
+                @include('layouts.partials.messages')
+            </div>
+
+            @yield('content-body')
         </div>
 
+        <!-- Ads board -->
+        <div class="ads-board">
+            <h4>لوحة الإعلانات</h4>
+            <div class="ad-item">
+                <p>إعلان 1: وصف الإعلان هنا.</p>
+            </div>
+            <div class="ad-item">
+                <p>إعلان 2: وصف الإعلان هنا.</p>
+            </div>
+            <div class="ad-item">
+                <p>إعلان 3: وصف الإعلان هنا.</p>
+            </div>
+        </div>
 
-        @yield('content-body')
-        
     </div>
 
     @include('layouts.footer')
