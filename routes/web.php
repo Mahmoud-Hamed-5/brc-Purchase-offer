@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\Admin_AuthController;
 use App\Http\Controllers\Admin\Purchase\Admin_PurchaseController;
+use App\Http\Controllers\Web\Purchase\Web_PurchaseController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -9,6 +10,12 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
+
+Route::controller(Web_PurchaseController::class)->group(function () {
+    Route::get('/purchase/view-purchase-offers', 'offers_index')->name('web.purchase_offers.index');
+});
+
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

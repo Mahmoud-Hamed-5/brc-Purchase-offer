@@ -43,21 +43,10 @@
             </li>
         </div>
 
+        <a href="{{ route('web.purchase_offers.index') }}">{{'الشراء المباشر'}}</a>
 
         <!-- Contact Link -->
         <a href="#contact">اتصل بنا</a>
     </nav>
 
-
-           {{-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                عن الشركة <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" onclick="load_home('activity.html')" href="#"><i class="fa fa-bar-chart"></i> الأنشطة </a></li>
-                <li><a class="dropdown-item" onclick="load_home('management.html')" href="#"><i class="fa fa-fw fa-university"></i> الهيكل الاداري </a></li>
-                <li><a class="dropdown-item" onclick="load_home('manager.html')" href="#"><i class="fa fa-fw fa-address-card-o"></i> المدير العام </a></li>
-                <li><a class="dropdown-item" onclick="load_home('documents.html')" href="#"><i class="fa fa-fw fa-file-excel-o"></i> الوثائق المطلوبة للتعيين </a></li>
-            </ul>
-        </li> --}}
   </div>

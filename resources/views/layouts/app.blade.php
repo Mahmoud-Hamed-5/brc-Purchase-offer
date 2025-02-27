@@ -27,7 +27,7 @@
 
     <button id="back-to-top" title="Go to top">&#8593;</button>
 
-    <!-- Main container for content and ads board -->
+    <!-- Main container for content and Side board -->
     <div class="main-container">
 
         <!-- Main content -->
@@ -37,21 +37,13 @@
             </div>
 
             @yield('content-body')
+
+            @include('layouts.contact')
+
         </div>
 
-        <!-- Ads board -->
-        <div class="ads-board">
-            <h4>لوحة الإعلانات</h4>
-            <div class="ad-item">
-                <p>إعلان 1: وصف الإعلان هنا.</p>
-            </div>
-            <div class="ad-item">
-                <p>إعلان 2: وصف الإعلان هنا.</p>
-            </div>
-            <div class="ad-item">
-                <p>إعلان 3: وصف الإعلان هنا.</p>
-            </div>
-        </div>
+        <!-- Side board -->
+        @include('layouts.side-board')
 
     </div>
 

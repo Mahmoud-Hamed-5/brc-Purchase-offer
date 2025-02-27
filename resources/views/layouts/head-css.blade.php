@@ -105,11 +105,13 @@
     }
 
     section h2 {
-        font-size: 2rem;
-        color: #333;
+        text-align: center;
+        color: #000000;
         /* Consistent heading color */
         margin-bottom: 20px;
-        border-bottom: 3px solid #f4b400;
+        font-size: 2rem;
+        /* Slightly smaller than main content headings */
+        border-bottom: 2px solid #f4b400;
         /* Yellow underline for headings */
         padding-bottom: 10px;
     }
@@ -128,27 +130,10 @@
     }
 
     section ul li {
-        background: #f4f4f4;
-        /* Light background for list items */
-        margin: 10px 0;
-        padding: 15px;
-        border-right: 5px solid #f4b400;
-        /* Yellow accent border */
-        font-size: 1.1rem;
+        margin: 2px 0;
+        padding: 5px;
+        font-size: 1.3rem;
         color: #333;
-        /* Consistent text color */
-    }
-
-    .about h1 {
-        text-align: center;
-        color: #000000;
-        /* Consistent heading color */
-        margin-bottom: 20px;
-        font-size: 1.8rem;
-        /* Slightly smaller than main content headings */
-        border-bottom: 2px solid #f4b400;
-        /* Yellow underline for headings */
-        padding-bottom: 10px;
     }
 
     .contact {
@@ -309,7 +294,7 @@
     }
 
     /* Ads board */
-    .ads-board {
+    .side-board {
         width: 300px;
         /* Adjust ads board width */
         background-color: lightgray;
@@ -335,35 +320,35 @@
         /* Enable vertical scrolling */
     }
 
-    .ads-board h4 {
+    .side-board h2 {
         text-align: center;
-        color: #333;
+        color: black;
         /* Consistent heading color */
         margin-bottom: 20px;
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         /* Slightly smaller than main content headings */
         border-bottom: 2px solid #f4b400;
         /* Yellow underline for headings */
         padding-bottom: 10px;
     }
 
-    .ad-item {
+    .side-item {
         margin-bottom: 20px;
         text-align: center;
     }
 
-    .ad-item img {
+    .side-item img {
         max-width: 100%;
         height: auto;
         border-radius: 8px;
         /* Rounded corners for images */
     }
 
-    .ad-item p {
+    .side-item p {
         margin-top: 10px;
-        font-size: 1rem;
+        font-size: 1.3rem;
         /* Consistent text size */
-        color: #555;
+        color: black;
         /* Consistent text color */
         line-height: 1.6;
         /* Consistent line height */
@@ -378,7 +363,7 @@
             /* Stack content and sidebar on small screens */
         }
 
-        .ads-board {
+        .side-board {
             width: 100%;
             /* Full width on small screens */
             margin-right: 0;
@@ -396,4 +381,23 @@
         cursor: pointer;
     }
 
+</style>
+
+<style>
+    ul.custom-list {
+        list-style-type: none; /* Remove default bullets */
+    }
+    ul.custom-list li::before {
+        content: "* "; /* Add custom dash */
+        margin-right: 5px;
+        font-size: 1.5rem;
+        color: black;
+    }
+</style>
+
+<style>
+    th , td {
+        text-align: center;
+        vertical-align: middle;
+    }
 </style>
