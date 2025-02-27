@@ -61,11 +61,11 @@ class Admin_PurchaseController extends Controller
 
     public function edit_offer(Admin_PurchaseOfferEditRequest $request, PurchaseOffer $purchase_offer)
     {
-error_log("1");
+
         $input_data = $request->validated();
 
         $result = $this->purchaseOffer_service->edit_purchase_offer($input_data, $purchase_offer);
-        error_log("12");
+
         if ($result['status_code'] == 200) {
             $result_data = $result['data'];
 

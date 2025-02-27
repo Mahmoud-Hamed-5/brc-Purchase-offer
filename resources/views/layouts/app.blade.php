@@ -15,8 +15,6 @@
 
     @include('layouts.head-css')
 
-    <!-- Your existing styles -->
-    <link rel="stylesheet" href="path/to/your/styles.css">
 </head>
 
 <body>

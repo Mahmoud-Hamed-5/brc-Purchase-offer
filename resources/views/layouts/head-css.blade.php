@@ -1,9 +1,10 @@
 <!-- Bootstrap -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+
+{{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
     integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous">
-</script>
+</script> --}}
 
 <!-- Fonts -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -67,6 +68,11 @@
         background-color: #333;
         padding: 10px 0;
         text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 20px;
     }
 
     nav a {
@@ -95,7 +101,7 @@
 
     /* Sections Styling */
     section {
-        margin-bottom: 40px;
+        margin-bottom: 10px;
     }
 
     section h2 {
@@ -133,21 +139,85 @@
         /* Consistent text color */
     }
 
-    /* Contact Section Enhancements */
-    #contact p {
+    .about h1 {
+        text-align: center;
+        color: #000000;
+        /* Consistent heading color */
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+        /* Slightly smaller than main content headings */
+        border-bottom: 2px solid #f4b400;
+        /* Yellow underline for headings */
+        padding-bottom: 10px;
+    }
+
+    .contact {
+        max-width: 1400px;
+        margin: 15px auto;
+        padding: 20px;
+        background-color: lightgray;
+        /* White background for the content */
+        border-radius: 10px;
+        /* Rounded corners */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        /* Subtle shadow */
+    }
+
+    /* Contact Info Section */
+    .contact-info {
+        background-color: #ffffff;
+        /* White background */
+        padding: 20px;
+        border-radius: 10px;
+        /* Rounded corners */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        /* Subtle shadow */
+
+    }
+
+    .contact-info h2 {
+        font-size: 2rem;
+        color: #333;
+        /* Consistent heading color */
+        margin-bottom: 20px;
+        border-bottom: 3px solid #f4b400;
+        /* Yellow underline for headings */
+        padding-bottom: 10px;
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        /* Space between items */
+    }
+
+    .contact-icon {
+        font-size: 1.5rem;
+        /* color: #f4b400; */
+        /* Yellow accent color for icons */
+        margin-left: 10px;
+        /* Space between icon and text */
+    }
+
+    .contact-item p {
         font-size: 1.1rem;
         color: #555;
         /* Consistent text color */
+        margin: 0;
+        /* Remove default margin */
     }
 
-    #contact a {
-        color: #f4b400;
-        /* Yellow accent color for links */
+    .contact-item a {
+        color: #007bff;
+        /* Blue color for links */
         text-decoration: none;
+        /* Remove underline */
     }
 
-    #contact a:hover {
+    .contact-item a:hover {
         text-decoration: underline;
+        /* Underline on hover */
     }
 
     /* Footer */
@@ -227,6 +297,8 @@
         /* Reverse the flex direction */
         margin-top: 20px;
         /* Adjust as needed */
+        /* height: calc(100vh - 150px); */
+        /* Full viewport height minus header/footer height */
     }
 
     /* Main content */
@@ -235,8 +307,6 @@
         /* Take remaining space */
         padding: 15px;
     }
-
-
 
     /* Ads board */
     .ads-board {
@@ -260,6 +330,9 @@
         /* Rounded corners */
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         /* Subtle shadow */
+
+        overflow-y: auto;
+        /* Enable vertical scrolling */
     }
 
     .ads-board h4 {
@@ -318,4 +391,9 @@
             /* Remove shadow on small screens */
         }
     }
+
+    .dropdown-menu a {
+        cursor: pointer;
+    }
+
 </style>
