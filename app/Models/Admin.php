@@ -14,6 +14,7 @@ class Admin extends Authenticatable
 
     const ROLE_SUPER_ADMIN = 'super_admin';
     const ROLE_PURCHASE_ADMIN = 'purchase_admin';
+    const ROLE_TENDER_ADMIN = 'tender_admin';
 
     /**
      * The attributes that are mass assignable.

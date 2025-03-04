@@ -66,9 +66,7 @@ class Admin_AuthController extends Controller
         if ($result['status_code'] == 200) {
             $result_data = $result['data'];
 
-            $redirection_route = $result_data['redirection_route'];
-
-            return redirect($redirection_route)->withSuccess($result['msg']);
+            return redirect()->route('admin.dashboard.index')->withSuccess($result['msg']);
 
         }
 
@@ -91,6 +89,6 @@ class Admin_AuthController extends Controller
 
     public function dashboard(Request $request)
     {
-        return view('admin.index');
+        return view('admin.admin_index');
     }
 }

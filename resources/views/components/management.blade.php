@@ -105,7 +105,7 @@
             <tbody>
                 <tr>
                     <td colspan="2" width="100%">
-                        <p dir="RTL"><strong> {{ 'المدير العام المهندس محمود قاسم' }} </strong></p>
+                        <p dir="RTL"><strong> {{ 'المدير العام المهندس ابراهيم ابراهيم مسلم' }} </strong></p>
                     </td>
                 </tr>
                 <tr>
@@ -172,7 +172,7 @@
                         <p dir="RTL"><strong> {{ 'مدير المحطة الحرارية' }} </strong></p>
                     </td>
                     <td width="51%">
-                        <p dir="RTL"><strong> {{ 'المهندس انور عبد الله' }} </strong></p>
+                        <p dir="RTL"><strong> {{ 'المهندس معن الحامد' }} </strong></p>
                     </td>
                 </tr>
                 <tr>

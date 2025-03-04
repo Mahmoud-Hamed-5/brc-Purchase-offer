@@ -33,12 +33,12 @@ return Application::configure(basePath: dirname(__DIR__))
             }
 
             $segment = $request->segment(1);
-            if ($segment === 'admin') {
+            if ($segment == 'administration-dashboard') {
                 return response()->redirectTo(route('admin.auth.lock'));
             }
 
             if ($segment != 'admin') {
-                return response()->redirectTo(route('web.auth.login'));
+                return response()->redirectTo(route('site.welcome'));
             }
 
 

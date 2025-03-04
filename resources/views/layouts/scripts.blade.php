@@ -5,6 +5,7 @@
 <!-- Bootstrap JS (with Popper.js) -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+{{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> --}}
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -42,17 +43,25 @@
 
 <script>
     function load_content(component) {
-    // Hide all components first
-    document.querySelectorAll('#main-content > section').forEach(el => {
-        el.style.display = 'none';
-    });
 
-    // Show the requested component
-    const componentEl = document.getElementById(`${component}-component`);
-    if (componentEl) {
-        componentEl.style.display = 'block';
-    } else {
-        console.error(`Component "${component}" not found.`);
+         // Check if the current URL is not the root URL
+         if (window.location.pathname !== '/') {
+            // Redirect to the root URL
+            window.location.href = '/';
+            // return; // Stop further execution
+        }
+
+        // Hide all components first
+        document.querySelectorAll('#main-content > section').forEach(el => {
+            el.style.display = 'none';
+        });
+
+        // Show the requested component
+        const componentEl = document.getElementById(`${component}-component`);
+        if (componentEl) {
+            componentEl.style.display = 'block';
+        } else {
+            console.error(`Component "${component}" not found.`);
+        }
     }
-}
 </script>

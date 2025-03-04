@@ -26,6 +26,7 @@ class Admin_PurchaseOfferEditRequest extends FormRequest
             'materialType' => ['nullable', 'string'],
             'adDate' => ['nullable', 'date'],
             'closeDate' => ['nullable', 'date'],
+            'publishStatus' => ['nullable'],
             'file' => ['nullable', 'file'],
         ];
     }

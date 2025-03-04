@@ -36,7 +36,7 @@
 
     /* الهيدر مع صورة الخلفية */
     header {
-        background-image: url('../../assets/images/bg/brc-bg.jpg');
+        background-image: url('../../../assets/images/bg/brc-bg.jpg');
         /* استبدل بمسار الصورة الخاصة بك */
         background-size: cover;
         background-position: center;

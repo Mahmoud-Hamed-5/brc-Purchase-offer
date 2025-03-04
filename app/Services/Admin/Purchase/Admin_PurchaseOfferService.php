@@ -6,6 +6,7 @@ use App\Models\PurchaseOffer;
 use App\Services\Common\MediaService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 
 
 class Admin_PurchaseOfferService
@@ -53,6 +54,7 @@ class Admin_PurchaseOfferService
         $material_type = $input_data['materialType'];
         $ad_date = $input_data['adDate'];
         $close_date = $input_data['closeDate'];
+        $publish_status = isset($input_data['publish_status']) ?? false;
         $file = $input_data['file'];
 
         $path = $this->destinationPath . "$offer_number/";
@@ -63,6 +65,7 @@ class Admin_PurchaseOfferService
             'material_type' => $material_type,
             'ad_date' => $ad_date,
             'close_date' => $close_date,
+            'publish_status' => $publish_status,
             'file' => $file_path,
         ]);
 
@@ -88,7 +91,7 @@ class Admin_PurchaseOfferService
         $status_code = 400;
         $msg = 'processing error';
         $result = [];
-
+        
 
         $offer_number = isset($input_data['offerNumber']) ? $input_data['offerNumber'] : $purchase_offer->offer_number;
 
@@ -102,8 +105,6 @@ class Admin_PurchaseOfferService
             $purchase_offer->file = $file_path;
         }
 
-        error_log($input_data['materialType']);
-
         if (isset($input_data['offerNumber']))
             $purchase_offer->offer_number = $input_data['offerNumber'];
 
@@ -115,6 +116,8 @@ class Admin_PurchaseOfferService
 
         if (isset($input_data['closeDate']))
             $purchase_offer->close_date = $input_data['closeDate'];
+
+        $purchase_offer->publish_status = isset($input_data['publishStatus']) ?? false;
 
         $purchase_offer->save();
 

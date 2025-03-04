@@ -45,6 +45,11 @@
 
         <a href="{{ route('web.purchase_offers.index') }}">{{'الشراء المباشر'}}</a>
 
+        <a href="{{ route('web.tenders.AR_index') }}">{{'الاعلانات الداخلية'}}</a>
+
+        <a href="{{ route('web.tenders.EN_index') }}">{{'Tenders'}}</a>
+
+
         <!-- Contact Link -->
         <a href="#contact">اتصل بنا</a>
     </nav>

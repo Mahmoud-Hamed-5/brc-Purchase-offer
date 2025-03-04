@@ -16,7 +16,7 @@ class Web_PurchaseController extends Controller
 
     public function offers_index(Request $request)
     {
-        $purchase_offers = PurchaseOffer::get();
+        $purchase_offers = PurchaseOffer::where('publish_status', 1)->get();
 
         return view('purchase-offers.purchase-offers_index', compact('purchase_offers'));
 

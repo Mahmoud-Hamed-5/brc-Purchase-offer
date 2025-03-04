@@ -11,8 +11,9 @@ class PurchaseOffer extends Model
         'material_type',
         'ad_date',
         'close_date',
+        'publish_status',
         'file',
     ];
 
-    
+
 }

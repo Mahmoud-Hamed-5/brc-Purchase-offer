@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('material_type');
             $table->date('ad_date');
             $table->date('close_date');
+            $table->boolean('publish_status');
             $table->string('file');
             $table->timestamps();
         });
