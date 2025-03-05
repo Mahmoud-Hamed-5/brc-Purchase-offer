@@ -25,7 +25,8 @@ class Admin_OfferResultCreateRequest extends FormRequest
             'offerNumber' => ['required', 'numeric'],
             'title' => ['required', 'string'],
             'publishStatus' => ['nullable'],
-            'file' => ['required', 'file'],
+            // 'file' => ['required', 'file'],
+            'file' => ['nullable', 'file'],
         ];
     }
 }

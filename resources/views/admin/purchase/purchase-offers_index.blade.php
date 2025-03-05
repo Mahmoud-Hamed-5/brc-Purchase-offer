@@ -24,7 +24,7 @@
                         style="margin-top: 10px;">{{ __('إضافة بيانات') }}</a>
 
 
-                    <a href="{{ route('admin.dashboard.index') }}" class="btn btn-secondary"
+                    <a href="{{ route('admin.dashboard.index') }}" class="btn btn-dark"
                         style="margin-top: 10px;">{{ __('لوحة الإدارة') }}</a>
 
                     <a onclick="document.getElementById('logout-form').submit()" class="btn btn-danger"

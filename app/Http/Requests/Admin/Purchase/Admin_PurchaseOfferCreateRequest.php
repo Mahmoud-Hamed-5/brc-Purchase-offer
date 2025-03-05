@@ -27,7 +27,8 @@ class Admin_PurchaseOfferCreateRequest extends FormRequest
             'adDate' => ['required', 'date'],
             'closeDate' => ['required', 'date'],
             'publishStatus' => ['nullable'],
-            'file' => ['required', 'file'],
+            // 'file' => ['required', 'file'],
+            'file' => ['nullable', 'file'],
         ];
     }
 }

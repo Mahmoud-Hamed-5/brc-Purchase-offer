@@ -43,8 +43,9 @@ class Admin_TenderCreateRequest extends FormRequest
             'publishStatus' => ['nullable'],
 
             'closeDate' => ['required', 'date'],
-            'attachments' => ['required', 'array'],
-            'attachments.*' => ['file', 'max:2048'],
+            // 'attachments' => ['required', 'array'],
+            // 'attachments.*' => ['file', 'max:2048'],
+            'attachments' => ['nullable', 'array'],
         ];
     }
 }

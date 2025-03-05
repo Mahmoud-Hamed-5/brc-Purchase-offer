@@ -70,8 +70,11 @@
         <div class="bg-light" dir="rtl">
             <div class="container mt-4">
                 <div class="top-buttons">
-                    <a href="{{ route('admin.purchase_offers.index') }}" class="btn btn-secondary"
+                    <a href="{{ route('admin.purchase_offers.index') }}" class="btn btn-success"
                         style="margin-top: 10px;">{{ __('عرض البيانات') }}</a>
+
+                    <a href="{{ route('admin.dashboard.index') }}" class="btn btn-dark"
+                        style="margin-top: 10px;">{{ __('لوحة الإدارة') }}</a>
 
                     <a onclick="document.getElementById('logout-form').submit()" class="btn btn-danger"
                         style="margin-top: 10px;">{{ __('تسجيل خروج') }}</a>
@@ -119,12 +122,12 @@
                                 <div class="flex-grow-1">
                                     <label for="adDate" class="form-label"> {{ 'تاريخ الإعلان' }} </label>
                                     <input type="date" id="adDate" name="adDate" class="form-control"
-                                    value="{{ now()->toDateString() }}" required>
+                                        value="{{ now()->toDateString() }}" required>
                                 </div>
                                 <div class="flex-grow-1">
                                     <label for="closeDate" class="form-label"> {{ 'تاريخ الإغلاق' }} </label>
                                     <input type="date" class="form-control" id="closeDate" name="closeDate"
-                                    value="{{ now()->toDateString() }}" required>
+                                        value="{{ now()->toDateString() }}" required>
                                 </div>
                             </div>
 
@@ -154,5 +157,4 @@
             this.value = this.checked ? '1' : '0';
         });
     </script>
-
 @endsection

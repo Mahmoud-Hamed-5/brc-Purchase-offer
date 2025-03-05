@@ -73,12 +73,12 @@
                         </select>
 
                         <!-- Filter Button -->
-                        <a id="filterButton" class="btn btn-primary" style="margin-top: 10px;">
+                        <a id="filterButton" class="btn btn-warning" style="margin-top: 10px;">
                             {{ __('تصفية') }}
                         </a>
                     </div>
 
-                    <a href="{{ route('admin.dashboard.index') }}" class="btn btn-secondary"
+                    <a href="{{ route('admin.dashboard.index') }}" class="btn btn-dark"
                         style="margin-top: 10px;">{{ __('لوحة الإدارة') }}</a>
 
                     <a onclick="document.getElementById('logout-form').submit()" class="btn btn-danger"
@@ -139,8 +139,7 @@
                                             @if ($tender->attachments->count() > 0)
                                                 @foreach ($tender->attachments as $attachment)
                                                     <div class="mt-1">
-                                                        <a href="{{ asset($attachment->file_url) }}"
-                                                            class="button-link"
+                                                        <a href="{{ asset($attachment->file_url) }}" class="button-link"
                                                             download>
                                                             <i class="fas fa-download" style="color: green"></i>
                                                             {{ $attachment->file_name }}
@@ -153,13 +152,19 @@
                                         </td>
                                         <td>
                                             <div class="mt-1">
-                                                <button class="btn btn-warning btn-sm"
-                                                    onclick="editRecord({{ $tender->id }}, '{{ $tender->tender_type }}', '{{ $tender->tender_number }}',
-                                             '{{ $tender->title }}', '{{ $tender->details }}',
-                                              '{{ $tender->bond_cost }}', '{{ $tender->bond_currency }}',
-                                              '{{ $tender->tender_cost }}', '{{ $tender->tender_cost_currency }}',
-                                              '{{ $tender->close_date }}', '{{ $tender->publish_status }}'
-                                                , {{ json_encode($tender->attachments) | e('js') }}  )">
+                                                <button class="btn btn-warning btn-sm" data-id="{{ $tender->id }}"
+                                                    data-type="{{ $tender->tender_type }}"
+                                                    data-number="{{ $tender->tender_number }}"
+                                                    data-title="{{ $tender->title }}"
+                                                    data-details="{{ $tender->details }}"
+                                                    data-bond_cost="{{ $tender->bond_cost }}"
+                                                    data-bond_currency="{{ $tender->bond_currency }}"
+                                                    data-tender_cost="{{ $tender->tender_cost }}"
+                                                    data-tender_currency="{{ $tender->tender_cost_currency }}"
+                                                    data-close_date="{{ $tender->close_date }}"
+                                                    data-publish_status="{{ $tender->publish_status }}"
+                                                    data-attachments='@json($tender->attachments)'
+                                                    onclick="editRecord(this)">
                                                     {{ 'تعديل' }}
                                                 </button>
                                             </div>
@@ -187,22 +192,32 @@
 
 @section('script')
     <script>
-        function editRecord(id, tender_type, tender_number, title, details, bond_cost, bond_currency, tender_cost,
-            tender_currency, close_date, publish_status, attachments) {
+        function editRecord(button) {
+
+            // Get data from attributes
+            let id = button.dataset.id;
+            let tender_type = button.dataset.type;
+            let tender_number = button.dataset.number;
+            let title = button.dataset.title;
+            let details = button.dataset.details;
+            let bond_cost = button.dataset.bond_cost;
+            let bond_currency = button.dataset.bond_currency;
+            let tender_cost = button.dataset.tender_cost;
+            let tender_currency = button.dataset.tender_currency;
+            let close_date = button.dataset.close_date;
+            let publish_status = button.dataset.publish_status;
+            let attachments = JSON.parse(button.dataset.attachments); // Properly parse JSON
 
             document.getElementById('tenderEditId').value = id;
-            // document.getElementById('tenderEditType').value = tender_type;
             document.getElementById('tenderEditTenderNumber').value = tender_number;
             document.getElementById('tenderEditTitle').value = title;
-
             document.getElementById('tenderEditDetails').value = details;
             document.getElementById('tenderEditBondCost').value = bond_cost;
             document.getElementById('tenderEditBondCurrency').value = bond_currency;
             document.getElementById('tenderEditTenderCost').value = tender_cost;
             document.getElementById('tenderEditTenderCurrency').value = tender_currency;
-
             document.getElementById('tenderEditCloseDate').value = close_date;
-            // document.getElementById('tenderEditPublishStatus').value = publish_status;
+
 
             if (tender_type == 'internal') {
                 document.getElementById('tenderEditTypeInternal').checked = true;
@@ -220,10 +235,6 @@
             // Populate existing files
             const existingFilesContainer = document.getElementById('existingFilesContainer');
             existingFilesContainer.innerHTML = ''; // Clear previous content
-            console.log(attachments);
-            attachments = JSON.parse(attachments);
-
-            console.log(attachments);
 
             attachments.forEach(file => {
                 const fileDiv = document.createElement('div');

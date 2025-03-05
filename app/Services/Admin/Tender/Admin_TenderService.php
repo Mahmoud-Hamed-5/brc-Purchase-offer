@@ -29,7 +29,7 @@ class Admin_TenderService
             $tenders = $tenders->where('tender_type', $tender_type);
         }
 
-        if ($publish_status) {
+        if ($publish_status != null) {
             $tenders = $tenders->where('publish_status', $publish_status);
         }
 
@@ -133,7 +133,12 @@ class Admin_TenderService
         $result = [];
 
         if (isset($input_data['files'])) {
-            Log::error($input_data['files']);
+            foreach ($input_data['files'] as $file_id => $operation) {
+                if ($operation == 'delete' && $attachment = TenderAttachment::find($file_id)) {
+                    File::delete($attachment->file_url);
+                    $attachment->delete();
+                }
+            }
         }
 
         if (isset($input_data['newFiles'])) {
@@ -207,6 +212,7 @@ class Admin_TenderService
 
         foreach ($tender->attachments as $attachment) {
             File::delete($attachment->file_url);
+            $attachment->delete();
         }
 
 

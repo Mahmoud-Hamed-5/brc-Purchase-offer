@@ -70,8 +70,11 @@
         <div class="bg-light" dir="rtl">
             <div class="container mt-4">
                 <div class="top-buttons">
-                    <a href="{{ route('admin.offers_results.index') }}" class="btn btn-secondary"
+                    <a href="{{ route('admin.offers_results.index') }}" class="btn btn-success"
                         style="margin-top: 10px;">{{ __('عرض البيانات') }}</a>
+
+                    <a href="{{ route('admin.dashboard.index') }}" class="btn btn-dark"
+                        style="margin-top: 10px;">{{ __('لوحة الإدارة') }}</a>
 
                     <a onclick="document.getElementById('logout-form').submit()" class="btn btn-danger"
                         style="margin-top: 10px;">{{ __('تسجيل خروج') }}</a>
