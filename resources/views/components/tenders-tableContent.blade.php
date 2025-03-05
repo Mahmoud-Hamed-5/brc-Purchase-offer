@@ -13,8 +13,9 @@
             @if ($tender->attachments->count() > 0)
                 @foreach ($tender->attachments as $attachment)
                     <div class="mt-1">
-                        <a href="{{ asset($attachment->file_url) }}" class="btn btn-primary btn-sm"
-                            download>{{ $attachment->file_name }}
+                        <a href="{{ asset($attachment->file_url) }}" class="button-link" download>
+                            <i class="fas fa-download" style="color: green"></i>
+                            {{ $attachment->file_name }}
                         </a>
                     </div>
                 @endforeach

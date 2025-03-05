@@ -5,9 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Tender extends Model
 {
+
+    use SoftDeletes;
 
     const TYPE_INTERNAL = 'internal';
     const TYPE_EXTERNAL = 'external';

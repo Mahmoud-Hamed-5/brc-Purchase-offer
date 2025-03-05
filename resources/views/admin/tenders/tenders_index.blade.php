@@ -22,6 +22,25 @@
         width: 150px;
         /* Consistent width for dropdowns */
     }
+
+
+    .button-link {
+        display: inline-block;
+        padding: 2px 2px;
+        background-color: transparent;
+        font-size: small;
+        color: #000000;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        margin: 1px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .button-link:hover {
+        background-color: #0056b3;
+    }
 </style>
 
 @section('content-body')
@@ -70,92 +89,97 @@
                     </form>
                 </div>
 
+                <section>
+                    <div class="card shadow-lg p-4">
+                        <h2 class="text-center mb-4"> {{ 'الاعلانات الداخلية والخارجية' }} </h2>
 
-                <div class="card shadow-lg p-4">
-                    <h2 class="text-center mb-4"> {{ 'الاعلانات الداخلية' }} </h2>
-
-                    <table class="table table-bordered table-striped">
-                        <thead class="table-dark">
-                            <tr>
-                                <th> {{ 'رقم الإعلان' }} </th>
-                                <th> {{ 'نوع الإعلان' }} </th>
-                                <th> {{ 'موضوع الإعلان' }} </th>
-                                <th> {{ 'تفاصيل / شرح' }} </th>
-                                <th> {{ 'التأمينات الأولية' }} </th>
-                                <th> {{ 'قيمة دفتر الشروط' }} </th>
-                                <th> {{ 'موعد الإغلاق' }} </th>
-                                <th> {{ 'حالة النشر' }} </th>
-                                <th> {{ 'المرفقات' }} </th>
-                                <th> {{ 'العمليات' }} </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($tenders as $tender)
+                        <table class="table table-bordered table-striped">
+                            <thead class="table-dark">
                                 <tr>
-                                    <td>{{ $tender->tender_number }}</td>
+                                    <th> {{ 'رقم الإعلان' }} </th>
+                                    <th> {{ 'نوع الإعلان' }} </th>
+                                    <th> {{ 'موضوع الإعلان' }} </th>
+                                    <th> {{ 'تفاصيل / شرح' }} </th>
+                                    <th> {{ 'التأمينات الأولية' }} </th>
+                                    <th> {{ 'قيمة دفتر الشروط' }} </th>
+                                    <th> {{ 'موعد الإغلاق' }} </th>
+                                    <th> {{ 'حالة النشر' }} </th>
+                                    <th> {{ 'المرفقات' }} </th>
+                                    <th> {{ 'العمليات' }} </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($tenders as $tender)
+                                    <tr>
+                                        <td>{{ $tender->tender_number }}</td>
 
-                                    <td>
-                                        @if ($tender->tender_type == 'internal')
-                                            {{ 'داخلي' }}
-                                        @else
-                                            {{ 'خارجي' }}
-                                        @endif
-                                    </td>
+                                        <td>
+                                            @if ($tender->tender_type == 'internal')
+                                                {{ 'داخلي' }}
+                                            @else
+                                                {{ 'خارجي' }}
+                                            @endif
+                                        </td>
 
-                                    <td>{{ $tender->title }}</td>
-                                    <td>{{ $tender->details }}</td>
-                                    <td>{{ $tender->bond_cost_text }} {{ $tender->bond_currency }} </td>
-                                    <td>{{ $tender->tender_cost_text }} {{ $tender->tender_cost_currency }} </td>
-                                    <td>{{ $tender->close_date }}</td>
+                                        <td>{{ $tender->title }}</td>
+                                        <td>{{ $tender->details }}</td>
+                                        <td>{{ $tender->bond_cost_text }} {{ $tender->bond_currency }} </td>
+                                        <td>{{ $tender->tender_cost_text }} {{ $tender->tender_cost_currency }} </td>
+                                        <td>{{ $tender->close_date }}</td>
 
-                                    <td>
-                                        @if ($tender->publish_status)
-                                            <span class="badge bg-success">{{ 'نشط' }}</span>
-                                        @else
-                                            <span class="badge bg-danger">{{ 'متوقف' }}</span>
-                                        @endif
-                                    </td>
+                                        <td>
+                                            @if ($tender->publish_status)
+                                                <span class="badge bg-success">{{ 'نشط' }}</span>
+                                            @else
+                                                <span class="badge bg-danger">{{ 'متوقف' }}</span>
+                                            @endif
+                                        </td>
 
-                                    <td>
-                                        @if ($tender->attachments->count() > 0)
-                                            @foreach ($tender->attachments as $attachment)
-                                                <div class="mt-1">
-                                                    <a href="{{ asset($attachment->file_url) }}"
-                                                        class="btn btn-primary btn-sm"
-                                                        download>{{ $attachment->file_name }}
-                                                    </a>
-                                                </div>
-                                            @endforeach
-                                        @else
-                                            <span class="text-muted">{{ 'لا يوجد مرفقات' }}</span>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <div class="mt-1">
-                                        <button class="btn btn-warning btn-sm"
-                                            onclick="editRecord({{ $tender->id }}, '{{ $tender->tender_type }}', '{{ $tender->tender_number }}',
+                                        <td>
+                                            @if ($tender->attachments->count() > 0)
+                                                @foreach ($tender->attachments as $attachment)
+                                                    <div class="mt-1">
+                                                        <a href="{{ asset($attachment->file_url) }}"
+                                                            class="button-link"
+                                                            download>
+                                                            <i class="fas fa-download" style="color: green"></i>
+                                                            {{ $attachment->file_name }}
+                                                        </a>
+                                                    </div>
+                                                @endforeach
+                                            @else
+                                                <span class="text-muted">{{ 'لا يوجد مرفقات' }}</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <div class="mt-1">
+                                                <button class="btn btn-warning btn-sm"
+                                                    onclick="editRecord({{ $tender->id }}, '{{ $tender->tender_type }}', '{{ $tender->tender_number }}',
                                              '{{ $tender->title }}', '{{ $tender->details }}',
                                               '{{ $tender->bond_cost }}', '{{ $tender->bond_currency }}',
                                               '{{ $tender->tender_cost }}', '{{ $tender->tender_cost_currency }}',
-                                              '{{ $tender->close_date }}', '{{ $tender->publish_status }}')">
-                                            {{ 'تعديل' }}
-                                        </button>
-                                        </div>
-                                        <div class="mt-1">
-                                        <form action="{{ route('admin.tenders.delete_tender', $tender->id) }}"
-                                            method="POST" class="d-inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm"
-                                                onclick="return confirm('هل أنت متأكد؟')">{{ 'حذف' }}</button>
-                                        </form>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                                              '{{ $tender->close_date }}', '{{ $tender->publish_status }}'
+                                                , {{ json_encode($tender->attachments) | e('js') }}  )">
+                                                    {{ 'تعديل' }}
+                                                </button>
+                                            </div>
+                                            <div class="mt-1">
+                                                <form action="{{ route('admin.tenders.delete_tender', $tender->id) }}"
+                                                    method="POST" class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-sm"
+                                                        onclick="return confirm('هل أنت متأكد؟')">{{ 'حذف' }}</button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
             </div>
         </div>
     </main>
@@ -164,7 +188,7 @@
 @section('script')
     <script>
         function editRecord(id, tender_type, tender_number, title, details, bond_cost, bond_currency, tender_cost,
-            tender_currency, close_date, publish_status) {
+            tender_currency, close_date, publish_status, attachments) {
 
             document.getElementById('tenderEditId').value = id;
             // document.getElementById('tenderEditType').value = tender_type;
@@ -192,6 +216,45 @@
             publishStatusSwitch.checked = publish_status == 1 ? 1 : 0; // Set switch state
             publishStatusLabel.textContent = publish_status == 1 ? 'نشط' : 'متوقف'; // Set label text
 
+
+            // Populate existing files
+            const existingFilesContainer = document.getElementById('existingFilesContainer');
+            existingFilesContainer.innerHTML = ''; // Clear previous content
+            console.log(attachments);
+            attachments = JSON.parse(attachments);
+
+            console.log(attachments);
+
+            attachments.forEach(file => {
+                const fileDiv = document.createElement('div');
+                fileDiv.className = 'd-flex align-items-center gap-2 mb-2';
+
+                // File name
+                const fileNameSpan = document.createElement('span');
+                fileNameSpan.textContent = file.file_name;
+                fileDiv.appendChild(fileNameSpan);
+
+                // Delete button (X mark)
+                const deleteButton = document.createElement('button');
+                deleteButton.className = 'btn btn-danger btn-sm';
+                deleteButton.innerHTML = '&times;'; // X mark
+                deleteButton.onclick = function() {
+                    fileDiv.remove(); // Remove the file from the UI
+                    addHiddenInput(file.id, 'delete'); // Add hidden input to mark the file for deletion
+                };
+                fileDiv.appendChild(deleteButton);
+
+                // Hidden input to track file status
+                const hiddenInput = document.createElement('input');
+                hiddenInput.type = 'hidden';
+                hiddenInput.name = `files[${file.id}]`;
+                hiddenInput.value = 'keep'; // Default value
+                fileDiv.appendChild(hiddenInput);
+
+                existingFilesContainer.appendChild(fileDiv);
+            });
+
+
             editRoute =
                 "{{ route('admin.tenders.edit_tender', ['tender' => ':tenderId']) }}";
             editRoute =
@@ -200,6 +263,14 @@
             document.getElementById('editForm').action = editRoute;
             var editModal = new bootstrap.Modal(document.getElementById('tenderEditModal'));
             editModal.show();
+        }
+
+        function addHiddenInput(fileId, action) {
+            const hiddenInput = document.createElement('input');
+            hiddenInput.type = 'hidden';
+            hiddenInput.name = `files[${fileId}]`;
+            hiddenInput.value = action; // 'delete' or 'keep'
+            document.getElementById('editForm').appendChild(hiddenInput);
         }
     </script>
 

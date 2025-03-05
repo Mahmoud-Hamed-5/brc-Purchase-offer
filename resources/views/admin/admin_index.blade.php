@@ -43,14 +43,23 @@
                     <div class="card shadow-lg p-4">
                         <h2 class="text-center mb-4"> {{ 'لوحة الإدارة' }} </h2>
 
-                        <a href="{{ route('admin.purchase_offers.index') }}" class="btn btn-primary w-50 me-3"
-                            style="margin-top: 10px;">{{ __('إدارة الشراء المباشر') }}
-                        </a>
+                        <div class="mt-1">
+                            <a href="{{ route('admin.purchase_offers.index') }}" class="btn btn-primary w-50 me-3"
+                                style="margin-top: 10px;">{{ __('إدارة الشراء المباشر') }}
+                            </a>
+                        </div>
 
-                        <a href="{{ route('admin.tenders.index') }}" class="btn btn-secondary w-50 me-3"
-                            style="margin-top: 10px;">{{ __('إدارة الاعلانات الداخلية والخارجية') }}
-                        </a>
+                        <div class="mt-1">
+                            <a href="{{ route('admin.offers_results.index') }}" class="btn btn-success w-50 me-3"
+                                style="margin-top: 10px;">{{ __('إدارة نتائج العروض') }}
+                            </a>
+                        </div>
 
+                        <div class="mt-1">
+                            <a href="{{ route('admin.tenders.index') }}" class="btn btn-secondary w-50 me-3"
+                                style="margin-top: 10px;">{{ __('إدارة الاعلانات الداخلية والخارجية') }}
+                            </a>
+                        </div>
                     </div>
 
                 </section>

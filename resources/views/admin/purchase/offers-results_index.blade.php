@@ -14,13 +14,13 @@
 
 @section('content-body')
     <main>
-        @include('admin.purchase.partials.purchase-offer_editModal')
+        @include('admin.purchase.partials.offer-result_editModal')
 
         <div dir="rtl">
             <div class="container mt-4">
 
                 <div class="top-buttons">
-                    <a href="{{ route('admin.purchase_offers.create_offer') }}" class="btn btn-primary"
+                    <a href="{{ route('admin.offers_results.create_offer_result') }}" class="btn btn-primary"
                         style="margin-top: 10px;">{{ __('إضافة بيانات') }}</a>
 
 
@@ -37,37 +37,33 @@
 
                 <section>
                     <div class="card shadow-lg p-4">
-                        <h2 class="text-center mb-4">{{ 'عرض المواد أو الأعمال' }}</h2>
+                        <h2 class="text-center mb-4">{{ 'نتائج العروض' }}</h2>
 
                         <table class="table table-bordered table-striped">
                             <thead class="table-dark">
                                 <tr>
-                                    <th>{{ 'الرقم المتسلسل' }}</th>
-                                    <th>{{ 'نوع المواد أو الأعمال' }}</th>
-                                    <th>{{ 'تاريخ الإعلان' }}</th>
-                                    <th>{{ 'تاريخ الإغلاق' }}</th>
+                                    <th>{{ 'رقم الاعلان' }}</th>
+                                    <th>{{ 'عنوان الاعلان' }}</th>
                                     <th> {{ 'حالة النشر' }} </th>
-                                    <th>{{ 'نسخة عرض السعر' }}</th>
+                                    <th>{{ 'ملف النتائح' }}</th>
                                     <th>{{ 'العمليات' }}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($purchase_offers as $purchase_offer)
+                                @foreach ($offers_results as $offer_result)
                                     <tr>
-                                        <td>{{ $purchase_offer->offer_number }}</td>
-                                        <td>{{ $purchase_offer->material_type }}</td>
-                                        <td>{{ $purchase_offer->ad_date }}</td>
-                                        <td>{{ $purchase_offer->close_date }}</td>
+                                        <td>{{ $offer_result->offer_number }}</td>
+                                        <td>{{ $offer_result->title }}</td>
                                         <td>
-                                            @if ($purchase_offer->publish_status)
+                                            @if ($offer_result->publish_status)
                                                 <span class="badge bg-success">{{ 'نشط' }}</span>
                                             @else
                                                 <span class="badge bg-danger">{{ 'متوقف' }}</span>
                                             @endif
                                         </td>
                                         <td>
-                                            @if ($purchase_offer->file)
-                                                <a href="{{ asset($purchase_offer->file) }}" class="btn btn-primary btn-sm"
+                                            @if ($offer_result->file)
+                                                <a href="{{ asset($offer_result->file) }}" class="btn btn-primary btn-sm"
                                                     download>{{ 'تحميل' }}</a>
                                             @else
                                                 <span class="text-muted">لا يوجد ملف</span>
@@ -76,15 +72,14 @@
                                         <td>
                                             <div class="mt-1">
                                                 <button class="btn btn-warning btn-sm"
-                                                    onclick="editRecord({{ $purchase_offer->id }}, '{{ $purchase_offer->offer_number }}',
-                                             '{{ $purchase_offer->material_type }}', '{{ $purchase_offer->ad_date }}',
-                                              '{{ $purchase_offer->close_date }}', '{{ $purchase_offer->publish_status }}')">
+                                                    onclick="editRecord({{ $offer_result->id }}, '{{ $offer_result->offer_number }}',
+                                             '{{ $offer_result->title }}', '{{ $offer_result->publish_status }}')">
                                                     {{ 'تعديل' }}
                                                 </button>
                                             </div>
                                             <div class="mt-1">
                                                 <form
-                                                    action="{{ route('admin.purchase_offers.delete_offer', $purchase_offer->id) }}"
+                                                    action="{{ route('admin.offers_results.delete_offer_result', $offer_result->id) }}"
                                                     method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
@@ -107,12 +102,10 @@
 
 @section('script')
     <script>
-        function editRecord(id, offerNumber, materialType, adDate, closeDate, publishStatus) {
+        function editRecord(id, offerNumber, title, publishStatus) {
             document.getElementById('editId').value = id;
             document.getElementById('editOfferNumber').value = offerNumber;
-            document.getElementById('editMaterialType').value = materialType;
-            document.getElementById('editAdDate').value = adDate;
-            document.getElementById('editCloseDate').value = closeDate;
+            document.getElementById('editTitle').value = title;
 
             // Set the publish status switch and label
             const publishStatusSwitch = document.getElementById('editPublishStatus');
@@ -122,12 +115,12 @@
 
 
             editRoute =
-                "{{ route('admin.purchase_offers.edit_offer', ['purchase_offer' => ':offerId']) }}";
+                "{{ route('admin.offers_results.edit_offer_result', ['offer_result' => ':offerId']) }}";
             editRoute =
                 editRoute.replace(':offerId', id);
 
             document.getElementById('editForm').action = editRoute;
-            var editModal = new bootstrap.Modal(document.getElementById('editModal'));
+            var editModal = new bootstrap.Modal(document.getElementById('offerResultEditModal'));
             editModal.show();
         }
     </script>

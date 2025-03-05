@@ -1,21 +1,27 @@
 <?php
 
 use App\Http\Controllers\Admin\Admin_AuthController;
+use App\Http\Controllers\Admin\Purchase\Admin_OfferResultController;
 use App\Http\Controllers\Admin\Purchase\Admin_PurchaseController;
 use App\Http\Controllers\Admin\Tender\Admin_TenderController;
 use App\Http\Controllers\Web\Purchase\Web_PurchaseController;
 use App\Http\Controllers\Web\Tender\Web_TenderController;
+use App\Http\Controllers\Web\Web_HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('site.welcome');
 
 Auth::routes();
 
+Route::controller(Web_HomeController::class)->group(function () {
+    Route::get('/', 'index')->name('web.home.index');
+
+    Route::get('/news-data', 'get_news_data')->name('web.home.get_news_data');
+});
 
 Route::controller(Web_PurchaseController::class)->group(function () {
-    Route::get('/purchase/offers', 'offers_index')->name('web.purchase_offers.index');
+    Route::get('/purchase/offers', 'purchase_offers_index')->name('web.purchase_offers.index');
+
+    Route::get('/purchase/offers-results', 'offers_results_index')->name('web.offers_results.index');
 });
 
 Route::controller(Web_TenderController::class)->group(function () {
@@ -56,9 +62,18 @@ Route::group(['prefix' => 'administration-dashboard/restricted'], function () {
 
         });
 
-    });
+        Route::controller(Admin_OfferResultController::class)->group(function () {
+            Route::get('/offers-results/view-offers-results', 'offers_results_index')->name('admin.offers_results.index');
 
-    Route::group(['middleware' => ['auth:admin', 'role:super_admin|tender_admin|purchase_admin']], function () {
+            Route::get('/offers-results/create-offer-result', 'create_offer_result')->name('admin.offers_results.create_offer_result');
+            Route::post('/offers-results/store-offer-result', 'store_offer_result')->name('admin.offers_results.store_offer_result');
+
+            Route::post('/offers-results/edit-offer-result/{offer_result}', 'edit_offer_result')->name('admin.offers_results.edit_offer_result');
+
+
+            Route::delete('/offers-results/delete-offer-result/{offer_result}', 'delete_offer_result')->name('admin.offers_results.delete_offer_result');
+
+        });
 
         Route::controller(Admin_TenderController::class)->group(function () {
             Route::get('/tenders/view-tenders', 'tenders_index')->name('admin.tenders.index');

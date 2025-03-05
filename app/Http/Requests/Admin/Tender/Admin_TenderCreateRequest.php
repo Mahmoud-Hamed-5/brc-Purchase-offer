@@ -40,7 +40,7 @@ class Admin_TenderCreateRequest extends FormRequest
             'tenderCost' => ['required', 'numeric'],
             'tenderCurrency' => ['required', Rule::in($allowed_currencies)],
 
-            'publishStatus' => ['nullable', 'in:0,1'],
+            'publishStatus' => ['nullable'],
 
             'closeDate' => ['required', 'date'],
             'attachments' => ['required', 'array'],

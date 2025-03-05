@@ -117,10 +117,6 @@
 <div class="modal fade" id="tenderEditModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            {{-- <div class="modal-header">
-                <h5 class="modal-title" id="tenderEditModalLabel">{{ 'تعديل الاعلان' }}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="إغلاق"></button>
-            </div> --}}
             <div class="modal-body">
                 <form id="editForm" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -198,6 +194,7 @@
                         </div>
                     </div>
 
+                    <!-- Close Date and Publish Status Switch -->
                     <div class="mb-3 d-flex align-items-center gap-3">
                         <!-- Close Date -->
                         <div class="flex-grow-1 w-50">
@@ -207,21 +204,35 @@
                         </div>
 
                         <!-- Publish Status Switch -->
-                        <div class="w-50"> <!-- Adjust width as needed -->
+                        <div class="w-50">
                             <label for="tenderEditPublishStatus" class="form-label">{{ 'حالة النشر' }}</label>
                             <div class="form-check form-switch">
                                 <input type="checkbox" class="form-check-input" id="tenderEditPublishStatus"
                                     name="publishStatus" role="switch">
                                 <label class="form-check-label" for="tenderEditPublishStatus"
                                     id="publishStatusLabel">
-
+                                    متوقف
                                 </label>
                             </div>
                         </div>
                     </div>
 
+                    <!-- Existing Files Section -->
+                    <div class="mb-3">
+                        <label class="form-label"> {{ 'الملفات المرفقة' }} </label>
+                        <div id="existingFilesContainer">
+                            <!-- Existing files will be dynamically added here -->
+                        </div>
+                    </div>
+
+                    <!-- Add New Files -->
+                    <div class="mb-3">
+                        <label for="newFiles" class="form-label"> {{ 'إضافة ملفات جديدة' }} </label>
+                        <input type="file" class="form-control" id="newFiles" name="newFiles[]" multiple>
+                    </div>
+
                     <!-- Submit Button -->
-                    <button type="submit" class="btn btn-success w-50"> {{ 'حفظ التغييرات' }} </button>
+                    <button type="submit" class="btn btn-success w-100"> {{ 'حفظ التغييرات' }} </button>
                 </form>
             </div>
         </div>
@@ -232,5 +243,6 @@
     document.getElementById('tenderEditPublishStatus').addEventListener('change', function() {
         const publishStatusLabel = document.getElementById('publishStatusLabel');
         publishStatusLabel.textContent = this.checked ? 'نشط' : 'متوقف';
+        this.value = this.checked ? '1' : '0';
     });
 </script>

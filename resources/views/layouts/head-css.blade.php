@@ -116,6 +116,18 @@
         padding-bottom: 10px;
     }
 
+    section h5 {
+        text-align: start;
+        color: #ff0000;
+        /* Consistent heading color */
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+        /* Slightly smaller than main content headings */
+        /* border-bottom: 2px solid #0000f4; */
+        /* Yellow underline for headings */
+        padding-bottom: 10px;
+    }
+
     section p {
         font-size: 1.1rem;
         color: #555;
@@ -334,7 +346,7 @@
 
     .side-item {
         margin-bottom: 20px;
-        text-align: center;
+        text-align: start;
     }
 
     .side-item img {
@@ -346,11 +358,11 @@
 
     .side-item p {
         margin-top: 10px;
-        font-size: 1.3rem;
+        font-size: 1.1rem;
         /* Consistent text size */
         color: black;
         /* Consistent text color */
-        line-height: 1.6;
+        line-height: 1.3;
         /* Consistent line height */
     }
 

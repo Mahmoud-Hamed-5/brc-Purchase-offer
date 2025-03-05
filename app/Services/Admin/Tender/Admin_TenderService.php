@@ -132,17 +132,24 @@ class Admin_TenderService
         $msg = 'processing error';
         $result = [];
 
-        $tender_number = isset($input_data['tenderNumber']) ? $input_data['tenderNumber'] : $tender->tender_number;
+        if (isset($input_data['files'])) {
+            Log::error($input_data['files']);
+        }
 
-        // if (isset($input_data['file'])) {
-        //     $file = $input_data['file'];
-        //     File::delete($tender->file);
+        if (isset($input_data['newFiles'])) {
+            $path = $this->destinationPath;
+            foreach ($input_data['newFiles'] as $new_file) {
+                $file_name = $new_file->getClientOriginalName();
 
-        //     $path = $this->destinationPath . "$tender_number/";
-        //     $file_path = (new MediaService)->save_file($file, $path);
+                $file_path = (new MediaService)->save_file($new_file, $path);
 
-        //     $tender->file = $file_path;
-        // }
+                TenderAttachment::create([
+                    'tender_id' => $tender->id,
+                    'file_name' => $file_name,
+                    'file_url' => $file_path,
+                ]);
+            }
+        }
 
         if (isset($input_data['tenderNumber']))
             $tender->tender_number = $input_data['tenderNumber'];
@@ -168,11 +175,10 @@ class Admin_TenderService
         if (isset($input_data['tenderCurrency']))
             $tender->tender_cost_currency = $input_data['tenderCurrency'];
 
-        if (isset($input_data['publishStatus']))
-            $tender->publish_status = $input_data['publishStatus'];
-
         if (isset($input_data['closeDate']))
             $tender->close_date = $input_data['closeDate'];
+
+        $tender->publish_status = isset($input_data['publishStatus']) ?? false;
 
         $tender->save();
 
@@ -199,11 +205,14 @@ class Admin_TenderService
         $result = [];
 
 
-        // File::delete($purchase_offer->file);
+        foreach ($tender->attachments as $attachment) {
+            File::delete($attachment->file_url);
+        }
 
-        // $purchase_offer->delete();
 
-        $msg = "تم تعديل البيانات بنجاح";
+        $tender->delete();
+
+        $msg = "تم حذف البيانات بنجاح";
         $status_code = 200;
 
 

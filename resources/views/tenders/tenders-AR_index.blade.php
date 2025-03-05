@@ -10,6 +10,24 @@
         justify-content: space-between;
         margin-bottom: 20px;
     }
+
+    .button-link {
+        display: inline-block;
+        padding: 2px 2px;
+        background-color: transparent;
+        font-size: 0.9rem;
+        color: #000000;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        margin: 1px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .button-link:hover {
+        background-color: #0056b3;
+    }
 </style>
 
 @section('content-body')

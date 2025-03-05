@@ -5595,6 +5595,7 @@ textarea.form-control-lg {
 [data-bs-theme=dark] .carousel .carousel-caption, [data-bs-theme=dark].carousel .carousel-caption {
 	color: #000
 }
+
 .spinner-border, .spinner-grow {
 	display: inline-block;
 	width: var(--bs-spinner-width);

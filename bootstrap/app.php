@@ -38,7 +38,7 @@ return Application::configure(basePath: dirname(__DIR__))
             }
 
             if ($segment != 'admin') {
-                return response()->redirectTo(route('site.welcome'));
+                return response()->redirectTo(route('web.home.index'));
             }
 
 

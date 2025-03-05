@@ -1,24 +1,25 @@
-@yield('script')
 
 <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 
 <!-- Bootstrap JS (with Popper.js) -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
-{{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> --}}
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Show spinner on page load
-        document.getElementById('loading-spinner').style.display = 'flex';
+<!--
+Spinner
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show spinner on page load
+            document.getElementById('loading-spinner').style.display = 'flex';
 
-        // Hide spinner when the page is fully loaded
-        window.addEventListener('load', function() {
-            document.getElementById('loading-spinner').style.display = 'none';
+            // Hide spinner when the page is fully loaded
+            window.addEventListener('load', function() {
+                document.getElementById('loading-spinner').style.display = 'none';
+            });
         });
-    });
-</script>
+    </script>
 
+-->
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -64,4 +65,10 @@
             console.error(`Component "${component}" not found.`);
         }
     }
+</script>
+
+<script>
+    $(document).ready(function() {
+        getNewsData();
+    });
 </script>

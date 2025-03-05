@@ -36,7 +36,7 @@
     }
 </style>
 
-<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+<div class="modal fade" id="offerResultEditModal" tabindex="-1" aria-labelledby="offerResultEditModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -67,20 +67,8 @@
 
                     <!-- Material Type -->
                     <div class="mb-3">
-                        <label for="editMaterialType" class="form-label"> {{'نوع المواد أو الأعمال'}} </label>
-                        <input type="text" class="form-control" id="editMaterialType" name="materialType" required>
-                    </div>
-
-                    <!-- Ad Date and Close Date on the same line -->
-                    <div class="mb-3 d-flex align-items-center gap-3">
-                        <div class="flex-grow-1">
-                            <label for="editAdDate" class="form-label"> {{'تاريخ الإعلان'}} </label>
-                            <input type="date" class="form-control" id="editAdDate" name="adDate" required>
-                        </div>
-                        <div class="flex-grow-1">
-                            <label for="editCloseDate" class="form-label"> {{'تاريخ الإغلاق'}} </label>
-                            <input type="date" class="form-control" id="editCloseDate" name="closeDate" required>
-                        </div>
+                        <label for="editTitle" class="form-label"> {{'نوع المواد أو الأعمال'}} </label>
+                        <input type="text" class="form-control" id="editTitle" name="title" required>
                     </div>
 
                     <!-- File -->

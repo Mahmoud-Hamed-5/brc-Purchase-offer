@@ -21,9 +21,9 @@
 
     @include('layouts.topbar')
 
-    <div id="loading-spinner" style="display: none;">
+    {{-- <div id="loading-spinner" style="display: none;">
         <div class="spinner"></div>
-    </div>
+    </div> --}}
 
     <button id="back-to-top" title="Go to top">&#8593;</button>
 
@@ -50,6 +50,7 @@
     @include('layouts.footer')
 
     @include('layouts.scripts')
+    @yield('script')
 
 </body>
 

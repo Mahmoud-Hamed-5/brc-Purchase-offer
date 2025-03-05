@@ -39,9 +39,14 @@ class Admin_TenderEditRequest extends FormRequest
             'tenderCost' => ['nullable', 'numeric'],
             'tenderCurrency' => ['nullable', Rule::in($allowed_currencies)],
 
-            'publishStatus' => ['nullable', 'in:0,1'],
+            'publishStatus' => ['nullable'],
 
             'closeDate' => ['nullable', 'date'],
+
+            'newFiles' => ['nullable', 'array'],
+            'newFiles.*' => ['file', 'max:2048'],
+
+            'files' => ['nullable', 'array'],
         ];
     }
 }

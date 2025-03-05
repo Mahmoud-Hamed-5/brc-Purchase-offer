@@ -19,29 +19,25 @@
 
                 <section>
                     <div class="card shadow-lg p-4">
-                        <h2 class="text-center mb-4">{{ 'عروض المواد أو الأعمال' }}</h2>
+                        <h2 class="text-center mb-4">{{ 'نتائج العروض السابقة' }}</h2>
 
                         <table class="table table-bordered table-striped">
                             <thead class="table-dark">
                                 <tr>
                                     <th>{{ 'رقم الاعلان' }}</th>
-                                    <th>{{ 'نوع المواد أو الأعمال' }}</th>
-                                    <th>{{ 'تاريخ الإعلان' }}</th>
-                                    <th>{{ 'تاريخ الإغلاق' }}</th>
-                                    <th>{{ 'نسخة عرض السعر' }}</th>
+                                    <th>{{ 'عنوان الاعلان' }}</th>
+                                    <th>{{ 'ملف نتائج العرض' }}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($purchase_offers as $purchase_offer)
+                                @foreach ($offers_results as $offer_result)
                                     <tr>
-                                        <td>{{ $purchase_offer->offer_number }}</td>
-                                        <td>{{ $purchase_offer->material_type }}</td>
-                                        <td>{{ $purchase_offer->ad_date }}</td>
-                                        <td>{{ $purchase_offer->close_date }}</td>
+                                        <td>{{ $offer_result->offer_number }}</td>
+                                        <td>{{ $offer_result->title }}</td>
                                         <td>
-                                            @if ($purchase_offer->file)
-                                                <a href="{{ asset($purchase_offer->file) }}" class="btn btn-primary btn-sm"
-                                                    download>تحميل</a>
+                                            @if ($offer_result->file)
+                                                <a href="{{ asset($offer_result->file) }}" class="btn btn-primary btn-sm"
+                                                    download>{{'تحميل'}}</a>
                                             @else
                                                 <span class="text-muted">{{ 'لا يوجد ملف' }}</span>
                                             @endif

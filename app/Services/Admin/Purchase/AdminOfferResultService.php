@@ -2,6 +2,7 @@
 namespace App\Services\Admin\Purchase;
 
 use App\Models\Admin;
+use App\Models\OfferResult;
 use App\Models\PurchaseOffer;
 use App\Services\Common\MediaService;
 use Illuminate\Support\Facades\Auth;
@@ -9,22 +10,22 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
 
 
-class Admin_PurchaseOfferService
+class AdminOfferResultService
 {
 
-    protected $destinationPath = "storage/purchase-offers/";
+    protected $destinationPath = "storage/offers-results/";
 
-    public function get_purchase_offers()
+    public function get_offers_results()
     {
         $data = [];
         $status_code = 400;
         $msg = 'processing error';
         $result = [];
 
-        $purchase_offers = PurchaseOffer::get();
+        $offers_results = OfferResult::get();
 
         $data = [
-            'purchase_offers' => $purchase_offers,
+            'offers_results' => $offers_results,
         ];
         $status_code = 200;
         $msg = "تم استرداد كافة البيانات";
@@ -42,7 +43,7 @@ class Admin_PurchaseOfferService
     }
 
 
-    public function create_purchase_offer($input_data)
+    public function create_offer_result($input_data)
     {
         $data = [];
         $status_code = 400;
@@ -51,9 +52,8 @@ class Admin_PurchaseOfferService
 
 
         $offer_number = $input_data['offerNumber'];
-        $material_type = $input_data['materialType'];
-        $ad_date = $input_data['adDate'];
-        $close_date = $input_data['closeDate'];
+        $title = $input_data['title'];
+
         $publish_status = isset($input_data['publishStatus']) ?? false;
 
         $file_path = '';
@@ -64,12 +64,9 @@ class Admin_PurchaseOfferService
             $file_path = (new MediaService)->save_file($file, $path);
         }
 
-
-        $purchase_offer = PurchaseOffer::create([
+        $offer_result = OfferResult::create([
             'offer_number' => $offer_number,
-            'material_type' => $material_type,
-            'ad_date' => $ad_date,
-            'close_date' => $close_date,
+            'title' => $title,
             'publish_status' => $publish_status,
             'file' => $file_path,
         ]);
@@ -90,38 +87,33 @@ class Admin_PurchaseOfferService
     }
 
 
-    public function edit_purchase_offer($input_data, PurchaseOffer $purchase_offer)
+    public function edit_offer_result($input_data, OfferResult $offer_result)
     {
         $data = [];
         $status_code = 400;
         $msg = 'processing error';
         $result = [];
 
+
         if (isset($input_data['file'])) {
             $file = $input_data['file'];
-            File::delete($purchase_offer->file);
+            File::delete($offer_result->file);
 
             $path = $this->destinationPath;
             $file_path = (new MediaService)->save_file($file, $path);
 
-            $purchase_offer->file = $file_path;
+            $offer_result->file = $file_path;
         }
 
         if (isset($input_data['offerNumber']))
-            $purchase_offer->offer_number = $input_data['offerNumber'];
+            $offer_result->offer_number = $input_data['offerNumber'];
 
-        if (isset($input_data['materialType']))
-            $purchase_offer->material_type = $input_data['materialType'];
+        if (isset($input_data['title']))
+            $offer_result->title = $input_data['title'];
 
-        if (isset($input_data['adDate']))
-            $purchase_offer->ad_date = $input_data['adDate'];
+        $offer_result->publish_status = isset($input_data['publishStatus']) ?? false;
 
-        if (isset($input_data['closeDate']))
-            $purchase_offer->close_date = $input_data['closeDate'];
-
-        $purchase_offer->publish_status = isset($input_data['publishStatus']) ?? false;
-
-        $purchase_offer->save();
+        $offer_result->save();
 
         $msg = "تم تعديل البيانات بنجاح";
         $status_code = 200;
@@ -138,7 +130,7 @@ class Admin_PurchaseOfferService
     }
 
 
-    public function delete_purchase_offer(PurchaseOffer $purchase_offer)
+    public function delete_offer_result(OfferResult $offer_result)
     {
         $data = [];
         $status_code = 400;
@@ -146,9 +138,9 @@ class Admin_PurchaseOfferService
         $result = [];
 
 
-        File::delete($purchase_offer->file);
+        File::delete($offer_result->file);
 
-        $purchase_offer->delete();
+        $offer_result->delete();
 
         $msg = "تم حذف البيانات بنجاح";
         $status_code = 200;
