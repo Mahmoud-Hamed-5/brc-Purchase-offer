@@ -21,7 +21,9 @@ class Admin_PurchaseOfferService
         $msg = 'processing error';
         $result = [];
 
-        $purchase_offers = PurchaseOffer::get();
+        $purchase_offers = PurchaseOffer::
+        orderBy('created_at', 'desc')
+        ->get();
 
         $data = [
             'purchase_offers' => $purchase_offers,

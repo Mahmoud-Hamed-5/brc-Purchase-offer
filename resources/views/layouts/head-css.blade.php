@@ -21,7 +21,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-    /* أنماط عامة */
     body {
         font-family: 'Tajawal', Arial, sans-serif;
         /* Use a modern Arabic font */
@@ -34,10 +33,10 @@
         /* Light background for the page */
     }
 
-    /* الهيدر مع صورة الخلفية */
+    /* Header with Background Image */
     header {
         background-image: url('../../../assets/images/bg/brc-bg.jpg');
-        /* استبدل بمسار الصورة الخاصة بك */
+
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -63,28 +62,6 @@
         margin: 10px 0 0;
     }
 
-    /* Navigation Bar */
-    nav {
-        background-color: #333;
-        padding: 10px 0;
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-        padding: 10px 20px;
-    }
-
-    nav a {
-        color: white;
-        text-decoration: none;
-        margin: 0 15px;
-        font-size: 1.1rem;
-    }
-
-    nav a:hover {
-        color: #f4b400;
-    }
 
     /* Main Content Section */
     main {
@@ -99,138 +76,194 @@
         /* Subtle shadow */
     }
 
-    /* Sections Styling */
-    section {
-        margin-bottom: 10px;
-    }
-
-    section h2 {
-        text-align: center;
-        color: #000000;
-        /* Consistent heading color */
-        margin-bottom: 20px;
-        font-size: 2rem;
-        /* Slightly smaller than main content headings */
-        border-bottom: 2px solid #f4b400;
-        /* Yellow underline for headings */
-        padding-bottom: 10px;
-    }
-
-    section h5 {
-        text-align: start;
-        color: #ff0000;
-        /* Consistent heading color */
-        margin-bottom: 20px;
-        font-size: 1.5rem;
-        /* Slightly smaller than main content headings */
-        /* border-bottom: 2px solid #0000f4; */
-        /* Yellow underline for headings */
-        padding-bottom: 10px;
-    }
-
-    section p {
-        font-size: 1.1rem;
-        color: #555;
-        /* Consistent text color */
-        line-height: 1.8;
-        /* Consistent line height */
-    }
-
-    section ul {
-        list-style-type: none;
-        padding: 0;
-    }
-
-    section ul li {
-        margin: 2px 0;
-        padding: 5px;
-        font-size: 1.3rem;
-        color: #333;
-    }
-
-    .contact {
-        max-width: 1400px;
-        margin: 15px auto;
-        padding: 20px;
-        background-color: lightgray;
-        /* White background for the content */
-        border-radius: 10px;
-        /* Rounded corners */
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        /* Subtle shadow */
-    }
-
-    /* Contact Info Section */
-    .contact-info {
-        background-color: #ffffff;
-        /* White background */
-        padding: 20px;
-        border-radius: 10px;
-        /* Rounded corners */
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        /* Subtle shadow */
-
-    }
-
-    .contact-info h2 {
-        font-size: 2rem;
-        color: #333;
-        /* Consistent heading color */
-        margin-bottom: 20px;
-        border-bottom: 3px solid #f4b400;
-        /* Yellow underline for headings */
-        padding-bottom: 10px;
-    }
-
-    .contact-item {
+    /* Main container for content and ads board */
+    .main-container {
         display: flex;
-        align-items: center;
-        margin-bottom: 15px;
-        /* Space between items */
+        flex-direction: row-reverse;
+        margin-top: 20px;
     }
 
-    .contact-icon {
-        font-size: 1.5rem;
-        /* color: #f4b400; */
-        /* Yellow accent color for icons */
-        margin-left: 10px;
-        /* Space between icon and text */
+    /* Main content */
+    .content {
+        flex: 1;
+        padding: 15px;
     }
 
-    .contact-item p {
-        font-size: 1.1rem;
-        color: #555;
-        /* Consistent text color */
-        margin: 0;
-        /* Remove default margin */
+    .dropdown-menu a {
+        cursor: pointer;
     }
+</style>
 
-    .contact-item a {
-        color: #007bff;
-        /* Blue color for links */
-        text-decoration: none;
-        /* Remove underline */
-    }
 
-    .contact-item a:hover {
-        text-decoration: underline;
-        /* Underline on hover */
-    }
-
-    /* Footer */
-    footer {
+{{-- Navigation Bar --}}
+<style>
+    nav {
         background-color: #333;
-        color: white;
+        padding: 10px 20px;
         text-align: center;
-        padding: 20px 0;
-        margin-top: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        /* Allow wrapping on small screens */
+        gap: 10px;
     }
 
-    footer p {
-        margin: 0;
-        font-size: 1rem;
+    nav a {
+        color: white;
+        text-decoration: none;
+        margin: 5px 10px;
+        /* Reduce margin for better spacing */
+        font-size: 1.1rem;
+        white-space: nowrap;
+        /* Prevent text from breaking */
     }
 
+    nav a:hover {
+        color: #f4b400;
+    }
+
+    /* Make navbar scrollable on very small screens */
+    @media screen and (max-width: 600px) {
+        nav {
+            flex-direction: column;
+            /* Stack links vertically on small screens */
+        }
+
+        nav a {
+            margin: 5px 0;
+            display: block;
+        }
+    }
+</style>
+
+{{-- Side Board Style --}}
+<style>
+    /* Ads board */
+    .side-board {
+        width: 300px;
+        background-color: lightgray;
+        padding: 20px;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+        border-left: 1px solid #ddd;
+        margin-right: 20px;
+        margin-bottom: 35px;
+        margin-top: 35px;
+
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+        overflow-y: auto;
+        /* Enable vertical scrolling */
+    }
+
+    .side-board h2 {
+        text-align: center;
+        color: black;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+        border-bottom: 2px solid #f4b400;
+        padding-bottom: 10px;
+    }
+
+    .side-item {
+        margin-bottom: 20px;
+        text-align: start;
+    }
+
+    .side-item img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        /* Rounded corners for images */
+    }
+
+    .side-item p {
+        margin-top: 10px;
+        font-size: 1.1rem;
+        color: black;
+        line-height: 1.3;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .main-container {
+            flex-direction: column;
+            /* Stack content and sidebar on small screens */
+        }
+
+        .side-board {
+            width: 100%;
+            margin-right: 0;
+            margin-top: 20px;
+            border-left: none;
+            box-shadow: none;
+        }
+    }
+</style>
+
+{{-- ul list --}}
+<style>
+    ul.custom-list {
+        list-style-type: none;
+        /* Remove default bullets */
+    }
+
+    ul.custom-list li::before {
+        content: "* ";
+        /* Add custom dash */
+        margin-right: 5px;
+        font-size: 1.5rem;
+        color: black;
+    }
+</style>
+
+<style>
+    th,
+    td {
+        text-align: center;
+        vertical-align: middle;
+    }
+</style>
+
+{{-- Responsive Table on smaller screens --}}
+<style>
+    @media screen and (max-width: 768px) {
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            white-space: nowrap;
+        }
+    }
+</style>
+
+{{-- Back to top Button --}}
+<style>
+    #back-to-top {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 99;
+        font-size: 18px;
+        border: none;
+        outline: none;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        padding: 10px 15px;
+        border-radius: 50%;
+    }
+
+    #back-to-top:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+{{-- Loading Spinner --}}
+<style>
     /* Loading Spinner */
     #loading-spinner {
         position: fixed;
@@ -263,153 +296,149 @@
             transform: rotate(360deg);
         }
     }
+</style>
 
-    /* Back to Top Button */
-    #back-to-top {
-        display: none;
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 99;
-        font-size: 18px;
-        border: none;
-        outline: none;
-        background-color: #007bff;
-        color: white;
-        cursor: pointer;
-        padding: 10px 15px;
-        border-radius: 50%;
-    }
-
-    #back-to-top:hover {
-        background-color: #0056b3;
-    }
-
-
-
-    /* Main container for content and ads board */
-    .main-container {
-        display: flex;
-        flex-direction: row-reverse;
-        /* Reverse the flex direction */
-        margin-top: 20px;
-        /* Adjust as needed */
-        /* height: calc(100vh - 150px); */
-        /* Full viewport height minus header/footer height */
-    }
-
-    /* Main content */
-    .content {
-        flex: 1;
-        /* Take remaining space */
-        padding: 15px;
-    }
-
-    /* Ads board */
-    .side-board {
-        width: 300px;
-        /* Adjust ads board width */
-        background-color: lightgray;
-        /* Consistent background color */
+{{-- Contact Info Section --}}
+<style>
+    .contact {
+        max-width: 1400px;
+        margin: 15px auto;
         padding: 20px;
-        /* Consistent padding */
-        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-        /* Shadow on the left */
-        border-left: 1px solid #ddd;
-        /* Optional: Add a border */
-        margin-right: 20px;
-        /* Space between content and sidebar */
-
-        margin-bottom: 35px;
-        margin-top: 35px;
-
+        background-color: lightgray;
         border-radius: 10px;
-        /* Rounded corners */
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        /* Subtle shadow */
-
-        overflow-y: auto;
-        /* Enable vertical scrolling */
     }
 
-    .side-board h2 {
-        text-align: center;
-        color: black;
-        /* Consistent heading color */
+    /* Ensure the contact info box is responsive */
+    .contact-info {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Improve heading style */
+    .contact-info h2 {
+        font-size: 2rem;
+        color: #333;
         margin-bottom: 20px;
-        font-size: 1.8rem;
-        /* Slightly smaller than main content headings */
-        border-bottom: 2px solid #f4b400;
-        /* Yellow underline for headings */
+        border-bottom: 3px solid #f4b400;
         padding-bottom: 10px;
     }
 
-    .side-item {
-        margin-bottom: 20px;
-        text-align: start;
+    /* Ensure the items are aligned properly */
+    .contact-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        flex-wrap: wrap;
+        /* Allow text to wrap on smaller screens */
     }
 
-    .side-item img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px;
-        /* Rounded corners for images */
+    .contact-icon {
+        font-size: 1.5rem;
+        margin-left: 10px;
     }
 
-    .side-item p {
-        margin-top: 10px;
+    .contact-item p {
         font-size: 1.1rem;
-        /* Consistent text size */
-        color: black;
+        color: #555;
+        margin: 0;
+    }
+
+    /* Ensure links are styled correctly */
+    .contact-item a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    .contact-item a:hover {
+        text-decoration: underline;
+    }
+
+    /* 📱 Responsive Fix for Mobile */
+    @media screen and (max-width: 768px) {
+        .contact {
+            padding: 15px;
+        }
+
+        .contact-info {
+            padding: 15px;
+        }
+
+        .contact-info h2 {
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .contact-item {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+    }
+</style>
+
+{{-- Sections Styling --}}
+<style>
+    section {
+        margin-bottom: 10px;
+    }
+
+    section h2 {
+        text-align: center;
+        color: #000000;
+        margin-bottom: 20px;
+        font-size: 2rem;
+        border-bottom: 2px solid #f4b400;
+        padding-bottom: 10px;
+    }
+
+    section h5 {
+        text-align: start;
+        color: #ff0000;
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+        padding-bottom: 10px;
+    }
+
+    section p {
+        font-size: 1.1rem;
+        color: #555;
         /* Consistent text color */
-        line-height: 1.3;
+        line-height: 1.8;
         /* Consistent line height */
     }
 
-
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-        .main-container {
-            flex-direction: column;
-            /* Stack content and sidebar on small screens */
-        }
-
-        .side-board {
-            width: 100%;
-            /* Full width on small screens */
-            margin-right: 0;
-            /* Remove margin on small screens */
-            margin-top: 20px;
-            /* Space between content and sidebar */
-            border-left: none;
-            /* Remove border on small screens */
-            box-shadow: none;
-            /* Remove shadow on small screens */
-        }
+    section ul {
+        list-style-type: none;
+        padding: 0;
     }
 
-    .dropdown-menu a {
-        cursor: pointer;
-    }
-
-</style>
-
-<style>
-    ul.custom-list {
-        list-style-type: none; /* Remove default bullets */
-    }
-    ul.custom-list li::before {
-        content: "* "; /* Add custom dash */
-        margin-right: 5px;
-        font-size: 1.5rem;
-        color: black;
+    section ul li {
+        margin: 2px 0;
+        padding: 5px;
+        font-size: 1.3rem;
+        color: #333;
     }
 </style>
 
+{{-- Footer --}}
 <style>
-    th , td {
+    footer {
+        background-color: #333;
+        color: white;
         text-align: center;
-        vertical-align: middle;
+        padding: 20px 0;
+        margin-top: 40px;
+    }
+
+    footer p {
+        margin: 0;
+        font-size: 1rem;
     }
 </style>
