@@ -20,11 +20,11 @@ return new class extends Migration
             $table->string('title');
             $table->text('details');
 
-            $table->integer('bond_cost');
+            $table->bigInteger('bond_cost');
             $table->enum('bond_currency', Tender::CURRENCIES);
             $table->text('bond_details')->nullable();
 
-            $table->integer('tender_cost');
+            $table->bigInteger('tender_cost');
             $table->enum('tender_cost_currency', Tender::CURRENCIES);
             $table->text('tender_cost_details')->nullable();
 
