@@ -24,50 +24,56 @@ class Web_HomeController extends Controller
 
     public function get_news_data(Request $request)
     {
-        $status_code = 200;
-        $data = [];
-        $msg = "";
+
+        if (request()->ajax()) {
+            $status_code = 200;
+            $data = [];
+            $msg = "";
 
 
-        // 1. Offers Results
-        $offers_results = OfferResult::where('publish_status', 1)
-            ->orderBy('created_at', 'DESC')
-            ->take(3)
-            ->get();
+            // 1. Offers Results
+            $offers_results = OfferResult::where('publish_status', 1)
+                ->orderBy('created_at', 'DESC')
+                ->take(3)
+                ->get();
 
-        // 2. Purchase Offers
-        $purchase_offers = PurchaseOffer::where('publish_status', 1)
-            ->orderBy('created_at', 'DESC')
-            ->take(3)
-            ->get();
+            // 2. Purchase Offers
+            $purchase_offers = PurchaseOffer::where('publish_status', 1)
+                ->orderBy('created_at', 'DESC')
+                ->take(3)
+                ->get();
 
-        // 3. Internal Tenders
-        $internal_tenders = Tender::where('publish_status', 1)
-            ->where('tender_type', Tender::TYPE_INTERNAL)
-            ->orderBy('created_at', 'DESC')
-            ->take(3)
-            ->get();
+            // 3. Internal Tenders
+            $internal_tenders = Tender::where('publish_status', 1)
+                ->where('tender_type', Tender::TYPE_INTERNAL)
+                ->orderBy('created_at', 'DESC')
+                ->take(3)
+                ->get();
 
-        // 4. External Tenders
-        $external_tenders = Tender::where('publish_status', 1)
-            ->where('tender_type', Tender::TYPE_EXTERNAL)
-            ->orderBy('created_at', 'DESC')
-            ->take(3)
-            ->get();
+            // 4. External Tenders
+            $external_tenders = Tender::where('publish_status', 1)
+                ->where('tender_type', Tender::TYPE_EXTERNAL)
+                ->orderBy('created_at', 'DESC')
+                ->take(3)
+                ->get();
 
-        $data = [
-            'offers_results' => $offers_results,
-            'purchase_offers' => $purchase_offers,
-            'internal_tenders' => $internal_tenders,
-            'external_tenders' => $external_tenders,
-        ];
+            $data = [
+                'offers_results' => $offers_results,
+                'purchase_offers' => $purchase_offers,
+                'internal_tenders' => $internal_tenders,
+                'external_tenders' => $external_tenders,
+            ];
 
-        $result = [
-            'status_code' => $status_code,
-            'msg' => $msg,
-            'data' => $data,
-        ];
+            $result = [
+                'status_code' => $status_code,
+                'msg' => $msg,
+                'data' => $data,
+            ];
 
-        return $result;
+            return $result;
+        } else {
+            return redirect()->back();
+        }
+
     }
 }

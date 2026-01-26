@@ -72,7 +72,7 @@ class Admin_TenderController extends Controller
         if ($result['status_code'] == 200) {
             $result_data = $result['data'];
 
-            return redirect()->route('admin.tenders.index')->withSuccess($result['msg']);
+            return redirect()->back()->withSuccess($result['msg']);
         }
 
        return redirect()->back()->withErrors($result['msg']);

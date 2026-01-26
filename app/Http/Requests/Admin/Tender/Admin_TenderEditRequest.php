@@ -44,7 +44,7 @@ class Admin_TenderEditRequest extends FormRequest
             'closeDate' => ['nullable', 'date'],
 
             'newFiles' => ['nullable', 'array'],
-            'newFiles.*' => ['file', 'max:2048'],
+            'newFiles.*' => ['file', 'max:10000'],
 
             'files' => ['nullable', 'array'],
         ];
